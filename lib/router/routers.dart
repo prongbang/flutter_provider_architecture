@@ -5,7 +5,7 @@ import 'package:flutter_provider_architecture/feature/post/post.dart';
 import 'package:flutter_provider_architecture/feature/post/post_page.dart';
 
 class Routers {
-  static Route<dynamic> generateRoute(RouteSettings settings) {
+  static Route<dynamic> generateRouter(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomePage());

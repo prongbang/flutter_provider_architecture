@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_architecture/core/base_widget.dart';
-import 'package:flutter_provider_architecture/core/view_state.dart';
+import 'package:flutter_provider_architecture/core/provider_state.dart';
+import 'package:flutter_provider_architecture/core/provider_widget.dart';
 import 'package:flutter_provider_architecture/feature/post/comment/comment_viewmodel.dart';
 import 'package:flutter_provider_architecture/feature/post/comment/comments.dart';
 
@@ -11,18 +11,20 @@ class CommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<CommentViewModel>(
-      onModelReady: (model) => model.fetchComments(postId),
-      builder: (context, model, child) => model.state == ViewState.Busy
-          ? Center(child: CircularProgressIndicator())
-          : Expanded(
-              child: ListView(
-                children: model.comments
-                    .map((comment) => CommentItemWidget(comment))
-                    .toList(),
-              ),
+    return ProviderWidget<CommentViewModel>(
+        initial: (model) => model.fetchComments(postId),
+        builder: (context, model, child) {
+          if (model.state is Loading) {
+            return Center(child: CircularProgressIndicator());
+          }
+          return Expanded(
+            child: ListView(
+              children: model.comments
+                  .map((comment) => CommentItemWidget(comment))
+                  .toList(),
             ),
-    );
+          );
+        });
   }
 }
 

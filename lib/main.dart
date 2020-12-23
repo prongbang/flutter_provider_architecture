@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_architecture/di/service_locator.dart';
 import 'package:flutter_provider_architecture/router/routers.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() async {
@@ -12,11 +13,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(),
       initialRoute: 'login',
-      onGenerateRoute: Routers.generateRoute,
+      onGenerateRoute: Routers.generateRouter,
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_architecture/core/base_widget.dart';
+import 'package:flutter_provider_architecture/core/provider_widget.dart';
 import 'package:flutter_provider_architecture/feature/post/comment/comment_widget.dart';
 import 'package:flutter_provider_architecture/feature/post/post.dart';
 import 'package:flutter_provider_architecture/feature/post/post_viewmodel.dart';
@@ -11,7 +11,7 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseWidget<PostViewModel>(
+    return ProviderWidget<PostViewModel>(
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
           body: Padding(
